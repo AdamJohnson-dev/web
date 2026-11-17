@@ -1,11 +1,190 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Adam Johnson — Games Development</title>
-</head>
-<body>
-  <h1>Adam Johnson</h1>
-  <p>Games Development student at Belfast Met. Portfolio going up shortly.</p>
-</body>
-</html>
+  letter-spacing: -.035em;
+}
+
+.project-meta {
+  margin: 0 0 16px;
+  color: var(--accent-bright);
+  font-family: var(--display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .09em;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
+.project p {
+  margin: 0 0 13px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.project .project-role {
+  margin: 20px 0 0;
+  padding-top: 15px;
+  border-top: 1px solid var(--line);
+  color: #d4d4d8;
+  font-size: 13px;
+}
+
+.project-role strong {
+  color: var(--accent-bright);
+}
+
+/* About */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.4fr .85fr;
+  gap: clamp(36px, 7vw, 90px);
+}
+
+.about-grid p {
+  margin: 0 0 18px;
+  color: var(--muted);
+}
+
+.about-grid h3 {
+  margin: 0 0 14px;
+  color: var(--accent-bright);
+  font-size: 13px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.about-grid h3 + .skill-list + h3 {
+  margin-top: 36px;
+}
+
+.skill-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skill-list li {
+  padding: 11px 0;
+  border-bottom: 1px solid var(--line);
+  color: #d6d6dc;
+  font-size: 14px;
+  transition: padding-left .2s ease, color .2s ease;
+}
+
+.skill-list li::before {
+  margin-right: 11px;
+  color: var(--accent);
+  content: '✦';
+  font-size: 10px;
+}
+
+.skill-list li:hover {
+  padding-left: 5px;
+  color: #fff;
+}
+
+/* Contact */
+.section-contact {
+  text-align: center;
+  background: radial-gradient(ellipse at 50% 100%, rgba(255, 48, 59, .09), transparent 55%);
+}
+
+.section-contact h2 {
+  margin-inline: auto;
+}
+
+.section-contact .section-intro {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.contact-links {
+  justify-content: center;
+}
+
+/* Footer */
+.site-footer {
+  padding: 38px 0 48px;
+  color: #777780;
+  font-size: 13px;
+}
+
+.site-footer p {
+  margin: 0 0 5px;
+}
+
+/* Responsive */
+@media (max-width: 760px) {
+  .container {
+    width: min(100% - 36px, var(--max));
+  }
+
+  .header-inner {
+    min-height: auto;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 13px;
+    padding-top: 17px;
+    padding-bottom: 17px;
+  }
+
+  .site-nav {
+    gap: 20px;
+  }
+
+  .site-nav a {
+    font-size: 12px;
+  }
+
+  .hero {
+    padding: 88px 0 78px;
+  }
+
+  .hero::after {
+    top: 35%;
+    right: -270px;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 42px;
+  }
+
+  .work-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 420px) {
+  .container {
+    width: min(100% - 28px, var(--max));
+  }
+
+  .site-nav {
+    gap: 14px;
+  }
+
+  .hero-actions,
+  .contact-links {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .hero-actions .btn,
+  .contact-links .btn {
+    width: 100%;
+  }
+
+  .project-body {
+    padding: 21px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
