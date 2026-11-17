@@ -1,190 +1,57 @@
-  letter-spacing: -.035em;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games Development Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-.project-meta {
-  margin: 0 0 16px;
-  color: var(--accent-bright);
-  font-family: var(--display);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .09em;
-  line-height: 1.6;
-  text-transform: uppercase;
-}
+    <header>
+        <h2>YOUR.NAME</h2>
+        <nav>
+            <a href="#showreel">Showreel</a>
+            <a href="#work">Projects</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
 
-.project p {
-  margin: 0 0 13px;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.8;
-}
+    <main>
+        <section id="home">
+            <h1>Building Worlds. Creating Experiences.</h1>
+            <p>Games Development Portfolio</p>
+            <a href="#work">Explore My Work</a>
+        </section>
 
-.project .project-role {
-  margin: 20px 0 0;
-  padding-top: 15px;
-  border-top: 1px solid var(--line);
-  color: #d4d4d8;
-  font-size: 13px;
-}
+        <section id="showreel">
+            <h2>My Showreel</h2>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID"></iframe>
+        </section>
 
-.project-role strong {
-  color: var(--accent-bright);
-}
+        <section id="work">
+            <h2>My Projects</h2>
+            <article>
+                <h3>Coin Rush</h3>
+                <p>An arcade game created using Unreal Engine 5 and C++.</p>
+            </article>
+        </section>
 
-/* About */
-.about-grid {
-  display: grid;
-  grid-template-columns: 1.4fr .85fr;
-  gap: clamp(36px, 7vw, 90px);
-}
+        <section id="about">
+            <h2>About Me</h2>
+            <p>I am a Games Development student interested in gameplay programming, level design and game audio.</p>
+        </section>
 
-.about-grid p {
-  margin: 0 0 18px;
-  color: var(--muted);
-}
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <a href="mailto:you@example.com">Email Me</a>
+        </section>
+    </main>
 
-.about-grid h3 {
-  margin: 0 0 14px;
-  color: var(--accent-bright);
-  font-size: 13px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-}
+    <footer>
+        <p>© 2026 Your Name — Games Development Portfolio</p>
+    </footer>
 
-.about-grid h3 + .skill-list + h3 {
-  margin-top: 36px;
-}
-
-.skill-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.skill-list li {
-  padding: 11px 0;
-  border-bottom: 1px solid var(--line);
-  color: #d6d6dc;
-  font-size: 14px;
-  transition: padding-left .2s ease, color .2s ease;
-}
-
-.skill-list li::before {
-  margin-right: 11px;
-  color: var(--accent);
-  content: '✦';
-  font-size: 10px;
-}
-
-.skill-list li:hover {
-  padding-left: 5px;
-  color: #fff;
-}
-
-/* Contact */
-.section-contact {
-  text-align: center;
-  background: radial-gradient(ellipse at 50% 100%, rgba(255, 48, 59, .09), transparent 55%);
-}
-
-.section-contact h2 {
-  margin-inline: auto;
-}
-
-.section-contact .section-intro {
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.contact-links {
-  justify-content: center;
-}
-
-/* Footer */
-.site-footer {
-  padding: 38px 0 48px;
-  color: #777780;
-  font-size: 13px;
-}
-
-.site-footer p {
-  margin: 0 0 5px;
-}
-
-/* Responsive */
-@media (max-width: 760px) {
-  .container {
-    width: min(100% - 36px, var(--max));
-  }
-
-  .header-inner {
-    min-height: auto;
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 13px;
-    padding-top: 17px;
-    padding-bottom: 17px;
-  }
-
-  .site-nav {
-    gap: 20px;
-  }
-
-  .site-nav a {
-    font-size: 12px;
-  }
-
-  .hero {
-    padding: 88px 0 78px;
-  }
-
-  .hero::after {
-    top: 35%;
-    right: -270px;
-  }
-
-  .about-grid {
-    grid-template-columns: 1fr;
-    gap: 42px;
-  }
-
-  .work-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 420px) {
-  .container {
-    width: min(100% - 28px, var(--max));
-  }
-
-  .site-nav {
-    gap: 14px;
-  }
-
-  .hero-actions,
-  .contact-links {
-    align-items: stretch;
-    flex-direction: column;
-  }
-
-  .hero-actions .btn,
-  .contact-links .btn {
-    width: 100%;
-  }
-
-  .project-body {
-    padding: 21px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: .01ms !important;
-  }
-}
+</body>
+</html>
