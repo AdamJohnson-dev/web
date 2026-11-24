@@ -1,206 +1,997 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- CHANGE THIS: your name goes in the browser tab and in Google results -->
-  <title> Adam Johnson — Games Development Portfolio</title>
-  <meta name="description" content="Games Development student at Belfast Metropolitan College. Unreal Engine, C++, level design and game audio.">
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+  <title>Adam Johnson — Games Development Portfolio</title>
+<meta name="description" content="Games Development student at Belfast Metropolitan College. Unreal Engine 5, Blueprints and C++, world and level design, and game audio.">
+ 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap%22 rel="stylesheet">
+<style>
+
+/* ==========================================================
+
+   Adam Johnson — portfolio stylesheet
+
+   Change the colours in :root to re-theme the whole site.
+
+   ========================================================== */
+ 
+:root {
+
+  --bg: #0a0c11;
+
+  --bg-alt: #0f1219;
+
+  --surface: #151924;
+
+  --border: #252b3a;
+
+  --text: #e9ecf3;
+
+  --muted: #9aa4b8;
+
+  --accent: #b9f24b;        /* buttons, labels, highlights */
+
+  --accent-ink: #0c1002;    /* text that sits on the accent colour */
+
+  --radius: 14px;
+
+  --header-h: 64px;
+
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+}
+ 
+*,
+
+*::before,
+
+*::after { box-sizing: border-box; }
+ 
+html {
+
+  scroll-behavior: smooth;
+
+  scroll-padding-top: calc(var(--header-h) + 16px); /* anchors don't hide under the sticky header */
+
+}
+ 
+body {
+
+  margin: 0;
+
+  background: var(--bg);
+
+  color: var(--text);
+
+  font-family: var(--font-body);
+
+  font-size: 1.0625rem;
+
+  line-height: 1.65;
+
+  -webkit-font-smoothing: antialiased;
+
+}
+ 
+img { max-width: 100%; display: block; }
+ 
+a { color: var(--accent); text-underline-offset: 3px; }
+
+a:hover { text-decoration-thickness: 2px; }
+ 
+:focus-visible {
+
+  outline: 2px solid var(--accent);
+
+  outline-offset: 3px;
+
+  border-radius: 4px;
+
+}
+ 
+h1, h2, h3 {
+
+  font-family: var(--font-display);
+
+  line-height: 1.1;
+
+  margin: 0;
+
+  letter-spacing: -0.02em;
+
+}
+ 
+h2 { font-size: clamp(1.9rem, 4vw, 2.75rem); }
+
+h3 { font-size: 1.35rem; letter-spacing: -0.01em; }
+ 
+p { margin: 0 0 1em; }
+ 
+.container {
+
+  width: min(1120px, 100% - 2.5rem);
+
+  margin-inline: auto;
+
+}
+ 
+.skip-link {
+
+  position: absolute;
+
+  left: 1rem;
+
+  top: -4rem;
+
+  z-index: 100;
+
+  padding: 0.6rem 1rem;
+
+  background: var(--accent);
+
+  color: var(--accent-ink);
+
+  font-weight: 600;
+
+  border-radius: 8px;
+
+  text-decoration: none;
+
+}
+
+.skip-link:focus { top: 1rem; }
+ 
+/* ---------------- Header ---------------- */
+ 
+.site-header {
+
+  position: sticky;
+
+  top: 0;
+
+  z-index: 50;
+
+  background: rgba(10, 12, 17, 0.82);
+
+  backdrop-filter: blur(12px);
+
+  -webkit-backdrop-filter: blur(12px);
+
+  border-bottom: 1px solid var(--border);
+
+}
+ 
+.header-inner {
+
+  min-height: var(--header-h);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  flex-wrap: wrap;
+
+  padding-block: 0.5rem;
+
+}
+ 
+.logo {
+
+  font-family: var(--font-display);
+
+  font-weight: 700;
+
+  font-size: 1.15rem;
+
+  color: var(--text);
+
+  text-decoration: none;
+
+  letter-spacing: -0.01em;
+
+}
+
+.logo::before {
+
+  content: "";
+
+  display: inline-block;
+
+  width: 0.6em;
+
+  height: 0.6em;
+
+  margin-right: 0.55em;
+
+  background: var(--accent);
+
+  border-radius: 2px;
+
+  transform: rotate(45deg);
+
+}
+ 
+.site-nav {
+
+  display: flex;
+
+  gap: 0.25rem;
+
+  flex-wrap: wrap;
+
+}
+ 
+.site-nav a {
+
+  padding: 0.4rem 0.8rem;
+
+  color: var(--muted);
+
+  font-size: 0.95rem;
+
+  font-weight: 500;
+
+  text-decoration: none;
+
+  border-radius: 8px;
+
+  transition: color 0.15s, background-color 0.15s;
+
+}
+
+.site-nav a:hover {
+
+  color: var(--text);
+
+  background: var(--surface);
+
+}
+ 
+/* ---------------- Hero ---------------- */
+ 
+.hero {
+
+  position: relative;
+
+  padding: clamp(5rem, 14vw, 10rem) 0 clamp(4rem, 10vw, 7rem);
+
+  overflow: hidden;
+
+  border-bottom: 1px solid var(--border);
+
+  background:
+
+    radial-gradient(ellipse 60% 70% at 85% 0%, rgba(185, 242, 75, 0.13), transparent 70%),
+
+    var(--bg);
+
+}
+ 
+/* faint editor-style grid behind the hero text */
+
+.hero::before {
+
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background-image:
+
+    linear-gradient(var(--border) 1px, transparent 1px),
+
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+
+  background-size: 56px 56px;
+
+  opacity: 0.35;
+
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 85%);
+
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 85%);
+
+  pointer-events: none;
+
+}
+ 
+.hero .container { position: relative; }
+ 
+.kicker,
+
+.section-label {
+
+  font-family: var(--font-display);
+
+  font-size: 0.85rem;
+
+  font-weight: 500;
+
+  letter-spacing: 0.14em;
+
+  text-transform: uppercase;
+
+  color: var(--accent);
+
+  margin-bottom: 1rem;
+
+}
+ 
+.hero h1 {
+
+  font-size: clamp(3rem, 11vw, 7rem);
+
+  letter-spacing: -0.04em;
+
+  line-height: 0.95;
+
+}
+ 
+.tagline {
+
+  max-width: 38rem;
+
+  margin: 1.75rem 0 2.25rem;
+
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+
+  color: var(--muted);
+
+}
+ 
+.hero-actions,
+
+.contact-links {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 0.75rem;
+
+}
+ 
+/* ---------------- Buttons ---------------- */
+ 
+.btn {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  padding: 0.8rem 1.4rem;
+
+  font-family: var(--font-display);
+
+  font-weight: 500;
+
+  font-size: 1rem;
+
+  color: var(--text);
+
+  text-decoration: none;
+
+  border: 1px solid var(--border);
+
+  border-radius: 999px;
+
+  background: var(--surface);
+
+  transition: transform 0.15s, border-color 0.15s, background-color 0.15s;
+
+}
+
+.btn:hover {
+
+  transform: translateY(-2px);
+
+  border-color: var(--accent);
+
+}
+ 
+.btn-primary {
+
+  background: var(--accent);
+
+  border-color: var(--accent);
+
+  color: var(--accent-ink);
+
+  font-weight: 700;
+
+}
+
+.btn-primary:hover { background: #cbf76f; }
+ 
+/* ---------------- Sections ---------------- */
+ 
+.section { padding: clamp(4rem, 9vw, 7rem) 0; }
+
+.section:nth-of-type(odd) { background: var(--bg-alt); }
+ 
+.section-intro {
+
+  max-width: 40rem;
+
+  margin: 1rem 0 2.5rem;
+
+  color: var(--muted);
+
+  font-size: 1.1rem;
+
+}
+ 
+/* ---------------- Showreel ---------------- */
+ 
+.video {
+
+  position: relative;
+
+  aspect-ratio: 16 / 9;
+
+  background: #000;
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius);
+
+  overflow: hidden;
+
+  box-shadow: 0 30px 80px -30px rgba(185, 242, 75, 0.22);
+
+}
+ 
+.video iframe {
+
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  border: 0;
+
+}
+ 
+.video-caption {
+
+  margin-top: 1rem;
+
+  font-size: 0.92rem;
+
+  color: var(--muted);
+
+}
+ 
+/* ---------------- Work ---------------- */
+ 
+.work-grid {
+
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+  gap: 1.5rem;
+
+}
+ 
+.project {
+
+  display: flex;
+
+  flex-direction: column;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius);
+
+  overflow: hidden;
+
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+
+}
+
+.project:hover {
+
+  transform: translateY(-4px);
+
+  border-color: var(--accent);
+
+  box-shadow: 0 20px 50px -25px rgba(185, 242, 75, 0.35);
+
+}
+ 
+.project img {
+
+  width: 100%;
+
+  aspect-ratio: 16 / 9;
+
+  object-fit: cover;
+
+  /* shown while the screenshot loads, or if the file is missing */
+
+  background: linear-gradient(135deg, #1b2130, #10131b);
+
+  color: var(--muted);
+
+  font-size: 0.85rem;
+
+  border-bottom: 1px solid var(--border);
+
+}
+ 
+.project-body {
+
+  display: flex;
+
+  flex-direction: column;
+
+  flex: 1;
+
+  padding: 1.5rem;
+
+}
+ 
+.project-meta {
+
+  margin: 0.6rem 0 1rem;
+
+  font-size: 0.8rem;
+
+  font-weight: 500;
+
+  letter-spacing: 0.04em;
+
+  text-transform: uppercase;
+
+  color: var(--accent);
+
+}
+ 
+.project-body p { color: var(--muted); font-size: 0.98rem; }
+ 
+.project-role {
+
+  margin: auto 0 0;          /* pins the role box to the bottom so cards line up */
+
+  padding-top: 1rem;
+
+  border-top: 1px solid var(--border);
+
+}
+
+.project-role strong { color: var(--text); }
+ 
+/* ---------------- About ---------------- */
+ 
+.about-grid {
+
+  display: grid;
+
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+
+  gap: clamp(2rem, 6vw, 4.5rem);
+
+  align-items: start;
+
+}
+ 
+.about-text h2 { margin-bottom: 1.5rem; }
+
+.about-text p { color: var(--muted); max-width: 42rem; }
+ 
+.about-card {
+
+  margin-top: 2rem;
+
+  width: 100%;
+
+  max-width: 420px;
+
+  height: auto;
+
+  border-radius: var(--radius);
+
+  border: 1px solid var(--border);
+
+}
+ 
+.about-side {
+
+  padding: 1.75rem;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius);
+
+}
+
+.about-side h3 { margin-bottom: 0.9rem; }
+
+.about-side h3:not(:first-child) { margin-top: 2rem; }
+ 
+.skill-list {
+
+  list-style: none;
+
+  margin: 0;
+
+  padding: 0;
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 0.5rem;
+
+}
+ 
+.skill-list li {
+
+  padding: 0.35rem 0.8rem;
+
+  font-size: 0.9rem;
+
+  font-weight: 500;
+
+  color: var(--text);
+
+  background: var(--bg);
+
+  border: 1px solid var(--border);
+
+  border-radius: 999px;
+
+}
+ 
+/* ---------------- Contact ---------------- */
+ 
+.section-contact {
+
+  text-align: center;
+
+  background:
+
+    radial-gradient(ellipse 50% 80% at 50% 100%, rgba(185, 242, 75, 0.12), transparent 70%),
+
+    var(--bg);
+
+}
+
+.section-contact .section-intro { margin-inline: auto; }
+
+.section-contact .contact-links { justify-content: center; }
+ 
+/* ---------------- Footer ---------------- */
+ 
+.site-footer {
+
+  padding: 2rem 0;
+
+  border-top: 1px solid var(--border);
+
+  font-size: 0.88rem;
+
+  color: var(--muted);
+
+}
+ 
+.footer-inner {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  justify-content: space-between;
+
+  gap: 0.5rem 2rem;
+
+}
+
+.footer-inner p { margin: 0; }
+ 
+/* ---------------- Small screens ---------------- */
+ 
+@media (max-width: 760px) {
+
+  .about-grid { grid-template-columns: 1fr; }
+
+  .site-nav a { padding: 0.35rem 0.55rem; font-size: 0.9rem; }
+
+  .btn { padding: 0.7rem 1.15rem; }
+
+}
+ 
+@media (prefers-reduced-motion: reduce) {
+
+  html { scroll-behavior: auto; }
+
+  * { transition: none !important; }
+
+}
+</style>
 </head>
 <body>
-
+ 
+  <a class="skip-link" href="#showreel">Skip to content</a>
+ 
   <header class="site-header">
-    <div class="container header-inner">
-      <a class="logo" href="#top">Adam Johnson</a>
-      <nav class="site-nav">
-        <a href="#showreel">Showreel</a>
-        <a href="#work">Work</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
-
+<div class="container header-inner">
+<a class="logo" href="#top">Adam Johnson</a>
+<nav class="site-nav" aria-label="Main">
+<a href="#showreel">Showreel</a>
+<a href="#work">Work</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</nav>
+</div>
+</header>
+ 
   <main id="top">
-
+ 
     <!-- ============ HERO ============ -->
-    <section class="hero">
-      <div class="container">
-        <p class="kicker">Games Development · Belfast Met</p>
-        <h1>Adam Johnson</h1>
-        <p class="tagline">
+<section class="hero">
+<div class="container">
+<p class="kicker">Games Development · Belfast Met</p>
+<h1>Adam Johnson</h1>
+<p class="tagline">
+
           First-year Games Development student building games in Unreal Engine 5.
-          Gameplay programming in C++, level design, and game audio.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#showreel">Watch the showreel</a>
-          <a class="btn" href="#work">See the work</a>
-        </div>
-      </div>
-    </section>
 
+          World and level design, gameplay programming, and game audio.
+</p>
+<div class="hero-actions">
+<a class="btn btn-primary" href="#showreel">Watch the showreel</a>
+<a class="btn" href="#work">See the work</a>
+</div>
+</div>
+</section>
+ 
     <!-- ============ SHOWREEL ============ -->
-    <section class="section" id="showreel">
-      <div class="container">
-        <p class="section-label">01 — Showreel</p>
-        <h2>First Year Showreel</h2>
-        <p class="section-intro">
+<section class="section" id="showreel">
+<div class="container">
+<p class="section-label">01 — Showreel</p>
+<h2>First Year Showreel</h2>
+<p class="section-intro">
+
           Ninety seconds of everything I built this year: gameplay, levels,
+
           models and audio. Full breakdowns of each piece are below.
-        </p>
+</p>
+ 
+        <!-- CHANGE THIS: replace VIDEO_ID (in BOTH places below) with the id from your YouTube URL.
 
-        <!-- CHANGE THIS: replace VIDEO_ID with the id from your YouTube URL.
              youtube.com/watch?v=dQw4w9WgXcQ  ->  the id is dQw4w9WgXcQ
-             Use the /embed/ address, not the /watch address. -->
-        <div class="video">
-          <iframe
+
+             Use the /embed/ address in the iframe, not the /watch address. -->
+<div class="video">
+<iframe
+
             src="https://www.youtube.com/embed/VIDEO_ID"
-            title="Your Name — First Year Showreel"
+
+            title="Adam Johnson — First Year Showreel"
+
+            loading="lazy"
+
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+
             allowfullscreen></iframe>
-        </div>
+</div>
+ 
+        <!-- CHANGE THIS: the real track name and artist -->
+<p class="video-caption">
 
-        <p class="video-caption">
           Music: <em>Track name</em> by Artist, used under licence.
-          <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank" rel="noopener">Watch on YouTube</a>
-        </p>
-      </div>
-    </section>
-
+<a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank" rel="noopener">Watch on YouTube</a>
+</p>
+</div>
+</section>
+ 
     <!-- ============ WORK ============ -->
-    <section class="section" id="work">
-      <div class="container">
-        <p class="section-label">02 — Selected work</p>
-        <h2>What I built this year</h2>
-        <p class="section-intro">
-          Three projects from first year. Each one lists the tools, what I was
-          responsible for, and what I would do differently next time.
-        </p>
+<section class="section" id="work">
+<div class="container">
+<p class="section-label">02 — Selected work</p>
+<h2>What I built this year</h2>
+<p class="section-intro">
 
+          Three projects from first year. Each one lists the tools I used
+
+          and what I was responsible for.
+</p>
+ 
         <div class="work-grid">
-
+ 
           <!-- Copy one whole <article> block to add another project -->
-          <article class="project">
-            <img src="game1.png" alt="Player character collecting spinning coins in a neon arena">
-            <div class="project-body">
-              <h3>The Galactic Ruins of Aravia</h3>
-              <p class="project-meta">Unreal Engine 5 · Blueprints · Solo · 9 weeks</p>
-              <p>
-                The Galactic Ruins of Aravia is a 3D, third person, single player A to B games where the player will at the start of the maps and they must work there way through enemies and obsticales at every turn.  
-              
-                
-              
-              </p>
-              <p class="project-role">
-                <strong>My role:</strong> everything — gameplay classes, spawning,
+<article class="project">
+<img src="game1.png" alt="Screenshot from The Galactic Ruins of Aravia" loading="lazy">
+<div class="project-body">
+<h3>The Galactic Ruins of Aravia</h3>
+<p class="project-meta">Unreal Engine 5 · Blueprints · Solo · 9 weeks</p>
+<p>
+
+                A 3D, third-person, single-player A-to-B game. The player starts
+
+                at one end of the map and must work their way through enemies
+
+                and obstacles at every turn.
+</p>
+<p class="project-role">
+<strong>My role:</strong> everything — gameplay classes, spawning,
+
                 scoring, HUD, the end-of-round state, the enemy AI and the world design.
-              </p>
-            </div>
-          </article>
-
+</p>
+</div>
+</article>
+ 
           <article class="project">
-            <img src="game2.png" alt="Greybox blockout of a warehouse level seen from above">
-            <div class="project-body">
-              <h3>Santa's escape</h3>
-              <p class="project-meta">Unreal Engine 5 · Level design · Solo · 4 weeks</p>
-              <p>
-                Santa escape is a 2D christmas themed game where santa must survive a uprising from the evil ginger bread men who are depmanding better pay for making all of santas present, you must escape as santa with all the presents to ensure all the children have there presents for christmas.
-              </p>
-              <p class="project-role">
-                <strong>My role:</strong> layout, world design , piskel character design and all the blueprint coding.
-              </p>
-            </div>
-          </article>
+<img src="game2.png" alt="Screenshot from Santa's Escape" loading="lazy">
+<div class="project-body">
+<h3>Santa's Escape</h3>
+<p class="project-meta">Unreal Engine 5 · Blueprints · Piskel · Solo · 4 weeks</p>
+<p>
 
+                A 2D Christmas-themed game where Santa must survive an uprising
+
+                from the evil gingerbread men, who are demanding better pay for
+
+                making all of Santa's presents. Escape with every present to
+
+                make sure all the children have their gifts for Christmas.
+</p>
+<p class="project-role">
+<strong>My role:</strong> layout, world design, Piskel character
+
+                design and all the Blueprint coding.
+</p>
+</div>
+</article>
+ 
           <article class="project">
-            <img src="game3.png" alt="Low-poly sci-fi crate and barrel models on a turntable">
-            <div class="project-body">
-              <h3>Undead Hills</h3>
-              <p class="project-meta">Unreal engine 5 · adobe aftereffects · partnership · 16 weeks</p>
-              <p>
-              Undead Hills is a 3D first person shooter set in a post apocalyptic world were human are turning to zombie on mass and its your responsiblity to fight through the zombie patrols with very limited ammo and equipment to secure the anidote at the top of the kings castle.
-              </p>
-              <p class="project-role">
-                <strong>My role:</strong> world and level design, some blueprint coding and lighting.
-              </p>
-            </div>
-          </article>
+<img src="game3.png" alt="Screenshot from Undead Hills" loading="lazy">
+<div class="project-body">
+<h3>Undead Hills</h3>
+<p class="project-meta">Unreal Engine 5 · Adobe After Effects · Team of two · 16 weeks</p>
+<p>
 
-          
+                A 3D first-person shooter set in a post-apocalyptic world where
 
+                humans are turning into zombies en masse. Fight through the
+
+                zombie patrols with very limited ammo and equipment to secure
+
+                the antidote at the top of the king's castle.
+</p>
+<p class="project-role">
+<strong>My role:</strong> world and level design, some Blueprint
+
+                coding and lighting.
+</p>
+</div>
+</article>
+ 
+        </div>
+</div>
+</section>
+ 
     <!-- ============ ABOUT ============ -->
-    <section class="section" id="about">
-      <div class="container">
-        <p class="section-label">03 — About</p>
-        <div class="about-grid">
-          <div>
-            <h2>About me</h2>
-            <p>
-             My name is Adam Johnson, and I am a first-year Games Development student at Belfast Metropolitan College, Castlereagh Campus. My passion for games began through playing them, exploring their worlds and taking them apart to understand how they work behind the scenes. This curiosity inspired me to pursue Games Development and learn how to create games of my own. I have a particular interest in world and level design, where I enjoy imagining immersive environments, designing interesting locations and creating experiences that encourage players to explore and engage with the game. I am developing my skills in game design, creativity and technical development, with the ambition of becoming a professional game designer and contributing to the creation of exciting, memorable gaming experiences.
-            </p>
-            <p>
-             I am particularly interested in world and level design, where I can use my creativity to build immersive environments and engaging spaces for players to explore. I enjoy designing interesting locations, thinking about how levels flow and creating worlds that feel believable and memorable. Throughout my first year, I have been developing my skills in C++ and Blueprints, modelling and texturing my own assets, and recording and implementing my own audio. These experiences have helped me understand how different elements of game development come together to create a complete and enjoyable player experience.
-            </p>
-            <p>
-              Next I want to go deeper into C++ and take on a longer team project.
-            </p>
-            <img src="adam_johnson_card_rotating.gif" alt="Animated image" style="max-width: 100%; height: auto; border-radius: 8px;">
-          </div>
-          <div>
-            <h3>Tools</h3>
-            <ul class="skill-list">
-              <li>Unreal Engine 5</li>
-              <li>C++ and Blueprints</li>
-              <li>Blender</li>
-              <li>Substance Painter</li>
-              <li>Reaper and Audacity</li>
-              <li>Git and GitHub</li>
-            </ul>
+<section class="section" id="about">
+<div class="container">
+<p class="section-label">03 — About</p>
+<div class="about-grid">
+<div class="about-text">
+<h2>About me</h2>
+<p>
 
+              My name is Adam Johnson, and I am a first-year Games Development
+
+              student at Belfast Metropolitan College, Castlereagh Campus. My
+
+              passion for games began through playing them, exploring their
+
+              worlds and taking them apart to understand how they work behind
+
+              the scenes. That curiosity is what pushed me to learn how to
+
+              make games of my own.
+</p>
+<p>
+
+              I am particularly interested in world and level design: imagining
+
+              immersive environments, thinking about how a level flows, and
+
+              building places that feel believable and make players want to
+
+              explore. Throughout first year I have been developing my skills
+
+              in C++ and Blueprints, modelling and texturing my own assets, and
+
+              recording and implementing my own audio, which has shown me how
+
+              the different parts of development come together into a complete
+
+              player experience.
+</p>
+<p>
+
+              Next I want to go deeper into C++ and take on a longer team
+
+              project, with the ambition of becoming a professional game designer.
+</p>
+<img class="about-card" src="adam_johnson_card_rotating.gif" alt="Rotating 3D card with Adam Johnson's name on it" loading="lazy">
+</div>
+ 
+          <aside class="about-side">
+<h3>Tools</h3>
+<ul class="skill-list">
+<li>Unreal Engine 5</li>
+<li>C++ and Blueprints</li>
+<li>Blender</li>
+<li>Substance Painter</li>
+<li>Reaper and Audacity</li>
+<li>Git and GitHub</li>
+</ul>
+ 
             <h3>Strengths</h3>
-            <ul class="skill-list">
-              <li>Gameplay programming</li>
-              <li>Level blockout and pacing</li>
-              <li>Sound design and implementation</li>
-              <li>Finishing things on a deadline</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
+<ul class="skill-list">
+<li>World and level design</li>
+<li>Level blockout and pacing</li>
+<li>Gameplay programming</li>
+<li>Sound design and implementation</li>
+<li>Finishing things on a deadline</li>
+</ul>
+</aside>
+</div>
+</div>
+</section>
+ 
     <!-- ============ CONTACT ============ -->
-    <section class="section section-contact" id="contact">
-      <div class="container">
-        <p class="section-label">04 — Contact</p>
-        <h2>Get in touch</h2>
-        <p class="section-intro">
+<section class="section section-contact" id="contact">
+<div class="container">
+<p class="section-label">04 — Contact</p>
+<h2>Get in touch</h2>
+<p class="section-intro">
+
           Open to work experience, collaborations and game jams.
-        </p>
-        <!-- CHANGE THESE: your real links -->
-        <div class="contact-links">
-          <a class="btn btn-primary" href="mailto:you@example.com">you@example.com</a>
-          <a class="btn" href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a>
-          <a class="btn" href="https://www.youtube.com/@yourchannel" target="_blank" rel="noopener">YouTube</a>
-          <a class="btn" href="https://yourusername.itch.io" target="_blank" rel="noopener">itch.io</a>
-        </div>
-      </div>
-    </section>
-
+</p>
+<!-- CHANGE THESE: your real email and links. Delete any button you don't have a link for. -->
+<div class="contact-links">
+<a class="btn btn-primary" href="mailto:you@example.com">you@example.com</a>
+<a class="btn" href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a>
+<a class="btn" href="https://www.youtube.com/@yourchannel" target="_blank" rel="noopener">YouTube</a>
+<a class="btn" href="https://yourusername.itch.io" target="_blank" rel="noopener">itch.io</a>
+</div>
+</div>
+</section>
+ 
   </main>
-
+ 
   <footer class="site-footer">
-    <div class="container">
-      <p>© 2026 Your Name · Games Development · Belfast Metropolitan College</p>
-      <p>Built by hand with HTML and CSS. Hosted on GitHub Pages.</p>
-    </div>
-  </footer>
-
+<div class="container footer-inner">
+<p>© 2026 Adam Johnson · Games Development · Belfast Metropolitan College</p>
+<p>Built by hand with HTML and CSS. Hosted on GitHub Pages.</p>
+</div>
+</footer>
+ 
 </body>
 </html>
+
+ 
